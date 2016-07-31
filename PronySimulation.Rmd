@@ -1,0 +1,39 @@
+---
+title: "Some simulations of the Prony systems"
+author: "Andrey Akinshin"
+date: "July 31, 2016"
+output: html_document
+---
+
+## Introduction
+
+Consider the following system of signals:
+$$
+  \mathcal{S} = \{(a, x), (b, y)\}, \quad a,b,x,y \in \mathbb{R}
+$$
+where $a$, $b$ are signal amplitudes and $x$, $y$ are signal positions.
+
+Define the Prony map $\mathcal{P}$ as a map $\mathcal{P}: \mathcal{S} \mapsto (m_0, m_1, m_2, m_3)$ of the following form:
+$$
+  m_k = ax^k + by^k, \quad k = 0,1,2,3.
+$$
+
+Let $S_0 = \{(a_0, x_0), (b_0, y_0)\} \in \mathcal{S}$ be a so called reference signals: $a_0 = b_0 = 1, x_0 = 0, y_0 = h$ where h is a parameter which defines a distance between reference signals.
+
+Let $\mathcal{S}_t = \{(a_t, x_t), (b_t, y_t)\} \subset S$ be a set of so called trial signals, $M_{min} \leq a_t, b_t \leq M_{max}; Z_{min} \leq x_t, y_t \leq Z_{max}$
+
+Define a two-dimensional function $Q(x, y)$ as follows:
+$$
+  Q(x, y) = \min_{S_1 = \{(a_1, x), (b_1, y)\} \in \mathcal{S}_t} \textrm{Dist}(\mathcal{P}(S_0), \mathcal{P}(S_1))
+$$
+where $\textrm{Dist}$ is the Decart distance in the moment space.
+
+## Simulation
+
+Let's write some R code for calculation value of $Q$ for $M_{min} = 0, M_{max} = 2, Z_{min} = -1, Z_{max} = 1$:
+
+```{r echo=F}
+knitr::read_chunk('main.R')
+```
+```{r main, message=F}
+```

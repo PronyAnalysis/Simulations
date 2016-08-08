@@ -5,6 +5,13 @@ date: "July 31, 2016"
 output: html_document
 ---
 
+```{r echo=F}
+knitr::read_chunk('hyperbola.R')
+```
+```{r echo=F}
+knitr::read_chunk('error-sets.R')
+```
+
 ## Introduction
 
 Consider the following system of signals:
@@ -28,12 +35,42 @@ $$
 $$
 where $\textrm{Dist}$ is the Decart distance in the moment space.
 
-## Simulation
+### Hyperbolas
+
+```{r hyperbola, message=F}
+```
+
+### Error sets
 
 Let's write some R code for calculation value of $Q$ for $M_{min} = 0, M_{max} = 2, Z_{min} = -1, Z_{max} = 1$:
 
-```{r echo=F}
-knitr::read_chunk('main.R')
+```{r error-sets, message=F}
 ```
-```{r main, message=F}
+
+---
+
+## Figures
+
+We will build all the plots for $h = \{0.1, 0.3, 0.5\}$:
+```{r}
+h <- c(0.1, 0.3, 0.5)
+```
+
+### Figure 1
+Hyperbola $x_1 x_2 = -h^2$:
+```{r}
+drawHyperbola(h, -1)
+```
+
+### Figure 2
+
+Error sets:
+```{r fig.width=10}
+drawErrorSet(h)
+```
+
+### Figure 5
+Hyperbola $x_1 x_2 = h^2$:
+```{r}
+drawHyperbola(h, +1)
 ```

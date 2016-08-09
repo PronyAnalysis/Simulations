@@ -1,7 +1,7 @@
 ---
 title: "Some simulations of the Prony systems"
 author: "Andrey Akinshin"
-date: "July 31, 2016"
+date: "August 08, 2016"
 output: html_document
 ---
 
@@ -13,6 +13,8 @@ knitr::read_chunk('error-sets.R')
 ```
 
 ## Introduction
+
+*(This section will be rewritten)*
 
 Consider the following system of signals:
 $$
@@ -66,7 +68,12 @@ drawHyperbola(h, -1)
 
 Error sets:
 ```{r fig.width=10}
-drawErrorSet(h)
+drawErrorSet(h, sigma = 0)
+```
+
+### Figure 3
+```{r fig.width=10}
+drawErrorSet(h, sigma = 0.4)
 ```
 
 ### Figure 5

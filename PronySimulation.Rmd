@@ -76,6 +76,14 @@ drawErrorSet(h, sigma = 0)
 drawErrorSet(h, sigma = 0.4)
 ```
 
+### Figure 3.1
+```{r fig.width=10}
+drawErrorSet(0.3, sigma = 0.4, specific = data.frame(
+  x = c(-0.14, -0.25, -0.31, -0.47), 
+  y = c(0.31, 0.47, 0.14, 0.25), 
+  h = c(0.3, 0.3, 0.3, 0.3)))
+```
+
 ### Figure 5
 Hyperbola $x_1 x_2 = h^2$:
 ```{r}

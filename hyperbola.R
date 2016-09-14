@@ -2,15 +2,21 @@
 invisible(lapply(c("ggplot2", "dplyr"), require, ch = T))
 
 # draw x1 * x2 = sign * h^2
-drawHyperbola <- function(hs, sg = -1) {
-  
+buildHyperbola <- function(hs, sg = -1, h.as.factor = T) {
   len <- 1000
   d <- expand.grid(x1 = seq(-1, 1, length = len + 1)[-(len / 2 + 1)], h = hs) %>%
     mutate(x2 = sg * h^2 / x1) %>%
     mutate(group = factor(h * sign(x1))) %>%
-    mutate(h = factor(h)) %>%
     filter(abs(x2) <= 1)
+  if (h.as.factor)
+    d <- d %>% mutate(h = factor(h))
+  d
+}
+
+drawHyperbola <- function(hs, sg = -1) {
   
+  d <- buildHyperbola(hs, sg)
+
   p.x <- c(-hs, hs)
   p.y <- p.x * sg
   p <- data.frame(x = p.x, y = p.y)
